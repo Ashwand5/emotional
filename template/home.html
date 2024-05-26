@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETFLIX CLONE</title>
+    <link rel="icon" type="image/png" href="{% static 'emotion_icon.png' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<style>
+    .header{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("{% static 'feelings.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    padding: 10px 8%;
+    position: sticky;
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.text{
+    padding-top: 300px;
+    padding-bottom: 8px;
+}
+.logo{
+    width: 14%;
+    padding-right: 18px;
+    cursor: pointer;
+}
+
+</style>
+<!--<script>-->
+<!--function clearForm() {-->
+<!--    // Get all input elements in the form-->
+<!--    var inputs = document.getElementsByTagName("input");-->
+
+<!--    // Loop through each input element and clear its value-->
+<!--    for (var i = 0; i < inputs.length; i++) {-->
+<!--        inputs[i].value = "";-->
+<!--    }-->
+<!--}-->
+<!--</script>-->
+<body onload="clearForm()">
+
+<div class="header">
+    <nav>
+        <img src="{% static 'EMOTION.png'%}" class="logo">
+<!--        <div>-->
+<!--            <button class="Sign-btn"><a href="{% url 'login' %}">Sign In</a></button>-->
+<!--        </div>-->
+    </nav>
+
+    <div class="header-content">
+        <div class="text">
+            <!-- Text Input Section -->
+            <div class="input-section" style="border-bottom-style: solid;border-bottom-width: 60px;border-bottom-color: rgba(0, 0, 0, 0);">
+                <h1>The intersection of AI and human emotion</h1>
+                <br><br>
+                <h1 style="font-size: 150%; color: #a133c0; font-family: 'Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif', sans-serif;">Text analysis</h1>
+                <br>
+                <p>"Understanding emotions through text analysis provides invaluable insights into human psychology, revealing the intricate interplay between language and emotion."</p>
+                <p>- Paul Ekman</p>
+                <div>
+                    <form class="input-form" id="text-form" method="GET" action="">
+                        {% csrf_token %}
+                        <div class="input-container">
+                            <input type="text" id="text-input" name="text-input" placeholder="Enter text to analyze emotion" required>
+                            <button type="submit">Analyze Emotion
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="default-ltr-cache-4z3qvp e1svuwfo1" data-name="ChevronRight" aria-hidden="true">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5859 12L8.29303 19.2928L9.70725 20.7071L17.7072 12.7071C17.8948 12.5195 18.0001 12.2652 18.0001 12C18.0001 11.7347 17.8948 11.4804 17.7072 11.2928L9.70724 3.29285L8.29303 4.70706L15.5859 12Z" fill="currentColor"></path>
+                        </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-container">
+                    <h2>Emotion Analysis Result:</h2>
+                    {% if text_emotion %}
+                        <p id="text-output">{{ text_emotion }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="audio">
+            <!-- audio Input Section -->
+            <div class="input-section">
+                <h1 style="font-size: 150%; color: #a133c0; font-family: 'Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif', sans-serif;">Audio analysis</h1>
+                <br>
+                <p>"In audio tech, we create new ways for human voices to interact with the digital world."</p>
+                <p>- Ray Kurzweil</p>
+                <div>
+                    <form class="input-form" id="audio-form" method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="input-container">
+                            <input type="file" id="audio-input" name="audio-input" accept="audio/*" placeholder="Upload audio file to analyze emotion" required>
+                            <button type="submit">Analyze Emotion<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="default-ltr-cache-4z3qvp e1svuwfo1" data-name="ChevronRight" aria-hidden="true">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5859 12L8.29303 19.2928L9.70725 20.7071L17.7072 12.7071C17.8948 12.5195 18.0001 12.2652 18.0001 12C18.0001 11.7347 17.8948 11.4804 17.7072 11.2928L9.70724 3.29285L8.29303 4.70706L15.5859 12Z" fill="currentColor"></path>
+                        </svg></button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-container">
+                    <h2>Emotion Analysis Result:</h2>
+                    {% if audio_emotion %}
+                        <p id="audio-output">{{ audio_emotion }}</p>
+                    {% endif %}
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

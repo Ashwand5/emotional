@@ -1,0 +1,108 @@
+    <!DOCTYPE html>
+    {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmicFinds - Sign Up</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="{% static 'EMOTION.png' %}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+
+    body {
+        background: #000;
+        color: #fff;
+        margin: 0;
+        background-color: #000;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),  url("{% static 'feelings.jpg' %}");
+        background-size: cover;
+        background-position: center -70px;
+        padding: 10px 8% ;
+        position: fixed;
+    }
+    .wrapper .btn {
+  width: 100%;
+  height: 45px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #7212a8;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+</style>
+<body>
+    <div class="banner">
+        <a href="main.html">
+            <img class="netflix" src="{% static 'EMOTION.png' %}" alt="Netflix Logo">
+        </a>
+    </div>
+   
+    <!-- <div id="video-container">
+        <video id="background-video" autoplay >
+            <source src="C:\Users\ashwa\Downloads\netflix_final_copy.mp4" type="video/mp4">
+        </video>
+    </div> -->
+
+    <main>
+        <div id="netflix-logo">
+            <img src="{% static 'emotion_logo.png' %}">
+        </div>
+
+        <div id="content">
+            <div class="pics" style="margin-right: 250px;">
+                <div class="wrapper">
+                    <form action="" method='POST'>
+                        {% csrf_token %}
+                        <h1>Sign Up</h1>
+                        
+                        <div class="input-box" id="input1">
+                            <input type="text" name='username' required>
+                            <label>Username</label>
+                        </div>
+                        
+                        <div class="input-box" id="input2">
+                            <input type="email" name='email' required>
+                            <label>Email</label>
+                        </div>
+                        
+<!--                        <div class="input-box" id="input3">-->
+<!--                            <input type="tel" name='phoneno' required>-->
+<!--                            <label>Phone</label>-->
+<!--                        </div>-->
+                        
+                        <div class="input-box" id="input4">
+                            <input type="password" name='password' required>
+                            <label>Password</label>
+                        </div>
+                        
+                        <div class="input-box" id="input5">
+                            <input type="password" name='confirmpass' required>
+                            <label>Confirm Password</label>
+                        </div>
+
+                        <button type="submit" class="btn">Sign Up</button>
+                        <div class="register-link">
+                        <div class="existing-account">
+                            <p><br>Already have an account? <a href="{% url 'login' %}">Sign in</a></p >
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+
+</html>
